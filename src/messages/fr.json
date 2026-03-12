@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "contact": "Contact",
+    "admin": "Admin",
+    "cart": "Panier",
+    "order": "Commander"
+  },
+  "hero": {
+    "tagline": "Livraison rapide à domicile",
+    "subtitle": "Pizzas, burgers et sandwichs faits avec passion — livrés chauds chez vous.",
+    "cta": "Commander maintenant",
+    "badge": "🚀 Livraison en 45 min"
+  },
+  "menu": {
+    "title": "Notre Menu",
+    "subtitle": "Découvrez nos spécialités préparées avec les meilleurs ingrédients",
+    "add": "Ajouter",
+    "outOfStock": "Indisponible",
+    "da": "DA"
+  },
+  "cart": {
+    "title": "Votre Panier",
+    "empty": "Votre panier est vide",
+    "emptySubtitle": "Ajoutez des articles depuis notre menu pour commencer votre commande.",
+    "subtotal": "Sous-total",
+    "delivery": "Livraison",
+    "total": "Total",
+    "checkout": "Commander via WhatsApp",
+    "continue": "Continuer mes achats",
+    "remove": "Retirer"
+  },
+  "checkout": {
+    "title": "Finaliser la commande",
+    "name": "Nom complet",
+    "namePlaceholder": "Mohamed Amrani",
+    "phone": "Numéro de téléphone",
+    "phonePlaceholder": "0555 123 456",
+    "wilaya": "Wilaya",
+    "wilayaPlaceholder": "Sélectionnez votre wilaya",
+    "commune": "Commune",
+    "communePlaceholder": "Ex: Bab El Oued",
+    "address": "Adresse exacte",
+    "addressPlaceholder": "N° et nom de la rue",
+    "notes": "Notes (optionnel)",
+    "notesPlaceholder": "Allergies, préférences, instructions...",
+    "deliveryFee": "Frais de livraison",
+    "send": "Envoyer la commande sur WhatsApp",
+    "summary": "Récapitulatif",
+    "whatsappNote": "Votre commande sera envoyée via WhatsApp. Un de nos agents vous contactera pour confirmer."
+  },
+  "contact": {
+    "title": "Nous trouver",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "hours": "Horaires",
+    "followUs": "Suivez-nous"
+  },
+  "footer": {
+    "rights": "© 2024 Fast Food El Bahdja. Tous droits réservés.",
+    "delivery": "Livraison à domicile",
+    "payment": "Paiement à la livraison"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "yes": "Oui",
+    "no": "Non"
+  }
+}
