@@ -1,65 +1,74 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
-import { Zap } from 'lucide-react';
 
 export default function Hero() {
   const t = useTranslations();
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-primary via-red-600 to-brand-accent min-h-[560px] flex items-center">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 text-8xl rotate-12">🍕</div>
-        <div className="absolute top-20 right-20 text-6xl -rotate-12">🍔</div>
-        <div className="absolute bottom-20 left-1/4 text-7xl rotate-6">🥙</div>
-        <div className="absolute bottom-10 right-10 text-8xl -rotate-6">🍕</div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[200px] opacity-5">
-          🍕
+    <section className="shell py-6 pb-8 lg:py-8 lg:pb-12">
+      <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="surface relative overflow-hidden bg-[#111111] p-6 text-white sm:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.25),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_28%)]" />
+          <div className="relative max-w-xl">
+            <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+              Alger • Pizza • Burgers
+            </div>
+            <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">{t('hero.tagline')}</h1>
+            <p className="mt-4 max-w-lg text-sm leading-7 text-white/72 sm:text-base">{t('hero.subtitle')}</p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#menu">
+                <Button size="lg" className="w-full rounded-full bg-white px-7 text-black hover:bg-white/90 sm:w-auto">
+                  {t('hero.cta')}
+                </Button>
+              </a>
+              <a href="#contact">
+                <Button size="lg" variant="outline" className="w-full rounded-full border-white/15 bg-white/5 px-7 text-white hover:bg-white/10 sm:w-auto">
+                  Contact
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="relative container mx-auto px-4 py-20 text-center text-white">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-semibold mb-6 border border-white/30">
-          <Zap className="h-4 w-4 text-yellow-300" />
-          {t('hero.badge')}
+        <div className="grid gap-4">
+          <div className="surface overflow-hidden p-3">
+            <div className="relative h-[280px] overflow-hidden rounded-[22px] sm:h-[340px] lg:h-[390px]">
+              <Image
+                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=80"
+                alt="Inside a modern pizzeria"
+                fill
+                priority
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent p-5 text-white">
+                <p className="text-xs uppercase tracking-[0.18em] text-white/70">Ambiance</p>
+                <div className="mt-2 flex items-end justify-between gap-3">
+                  <div>
+                    <h2 className="text-2xl font-black">Salle chaleureuse</h2>
+                    <p className="mt-1 text-sm text-white/80">Service rapide, cuisine visible, expérience simple.</p>
+                  </div>
+                  <a href="#menu">
+                    <Button className="rounded-full bg-white px-4 text-black hover:bg-white/90">Commander</Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="surface p-4 sm:p-5">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Combo</p>
+                <h3 className="mt-1 text-xl font-black text-foreground">Combo Solo</h3>
+                <p className="mt-1 text-sm text-muted-foreground">Burger crispy, frites maison et boisson.</p>
+              </div>
+              <p className="whitespace-nowrap text-2xl font-black text-foreground">1 350 DA</p>
+            </div>
+          </div>
         </div>
-
-        {/* Brand name */}
-        <h1 className="text-5xl md:text-7xl font-black mb-4 drop-shadow-lg tracking-tight">
-          Fast Food
-          <span className="block text-yellow-300">El Bahdja</span>
-        </h1>
-
-        {/* Tagline */}
-        <p className="text-xl md:text-2xl font-semibold mb-3 opacity-90">
-          {t('hero.tagline')}
-        </p>
-
-        {/* Subtitle */}
-        <p className="text-base md:text-lg opacity-75 max-w-xl mx-auto mb-10">
-          {t('hero.subtitle')}
-        </p>
-
-        {/* CTA */}
-        <a href="#menu">
-          <Button
-            size="lg"
-            className="bg-white text-brand-primary hover:bg-yellow-50 font-bold text-lg px-10 py-6 rounded-full shadow-2xl hover:shadow-white/30 transition-all duration-200 hover:scale-105"
-          >
-            🛒 {t('hero.cta')}
-          </Button>
-        </a>
-      </div>
-
-      {/* Bottom wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 25C840 30 960 30 1080 25C1200 20 1320 10 1380 5L1440 0V60H1380C1320 60 1200 60 1080 60C960 60 840 60 720 60C600 60 480 60 360 60C240 60 120 60 60 60H0Z"
-            fill="#FFFAF0"
-          />
-        </svg>
       </div>
     </section>
   );

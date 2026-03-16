@@ -1,15 +1,14 @@
 import type { Category, MenuItem, Order, StoreSettings } from '@/types';
 
 export const MOCK_CATEGORIES: Category[] = [
-  { id: 'pizza', nameFr: 'Pizzas', nameAr: 'بيتزا', emoji: '🍕', order: 1 },
-  { id: 'burger', nameFr: 'Burgers', nameAr: 'برغر', emoji: '🍔', order: 2 },
-  { id: 'sandwich', nameFr: 'Sandwichs', nameAr: 'ساندويش', emoji: '🥙', order: 3 },
-  { id: 'boisson', nameFr: 'Boissons', nameAr: 'مشروبات', emoji: '🥤', order: 4 },
-  { id: 'dessert', nameFr: 'Desserts', nameAr: 'حلويات', emoji: '🍰', order: 5 },
+  { id: 'pizza', nameFr: 'Pizzas', nameAr: 'بيتزا', emoji: '', order: 1 },
+  { id: 'burger', nameFr: 'Burgers', nameAr: 'برغر', emoji: '', order: 2 },
+  { id: 'sandwich', nameFr: 'Sandwichs', nameAr: 'ساندويش', emoji: '', order: 3 },
+  { id: 'boisson', nameFr: 'Boissons', nameAr: 'مشروبات', emoji: '', order: 4 },
+  { id: 'dessert', nameFr: 'Desserts', nameAr: 'حلويات', emoji: '', order: 5 },
 ];
 
 export const MOCK_MENU_ITEMS: MenuItem[] = [
-  // Pizzas
   {
     id: 'p1',
     categoryId: 'pizza',
@@ -18,7 +17,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Sauce tomate, mozzarella fraîche, basilic',
     descriptionAr: 'صلصة طماطم، موزاريلا طازجة، ريحان',
     price: 1200,
-    image: 'https://picsum.photos/seed/margherita/400/300',
+    image:
+      'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -29,7 +29,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Poulet rôti, poivrons, oignons, sauce crème',
     descriptionAr: 'دجاج مشوي، فلفل، بصل، صلصة كريمة',
     price: 1400,
-    image: 'https://picsum.photos/seed/chicken-pizza/400/300',
+    image:
+      'https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -40,7 +41,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Mozzarella, emmental, chèvre, parmesan',
     descriptionAr: 'موزاريلا، إيمنتال، جبن الماعز، بارميزان',
     price: 1500,
-    image: 'https://picsum.photos/seed/quattro-formaggi/400/300',
+    image:
+      'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -51,10 +53,10 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Légumes grillés, sauce tomate, herbes de Provence',
     descriptionAr: 'خضروات مشوية، صلصة طماطم، أعشاب',
     price: 1100,
-    image: 'https://picsum.photos/seed/veggie-pizza/400/300',
+    image:
+      'https://images.unsplash.com/photo-1511689660979-10d2b1aada49?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
-  // Burgers
   {
     id: 'b1',
     categoryId: 'burger',
@@ -63,7 +65,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Bœuf 150g, cheddar, salade, tomate, cornichon',
     descriptionAr: 'لحم بقري 150غ، شيدر، خس، طماطم، مخلل',
     price: 800,
-    image: 'https://picsum.photos/seed/classic-burger/400/300',
+    image:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -74,7 +77,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Poulet pané croustillant, sauce ranch, coleslaw',
     descriptionAr: 'دجاج مقرمش مخبوز، صلصة رانش، سلطة',
     price: 850,
-    image: 'https://picsum.photos/seed/crispy-burger/400/300',
+    image:
+      'https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -85,10 +89,10 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Double steak smashé, double cheddar, sauce spéciale',
     descriptionAr: 'ستيك مضغوط مزدوج، شيدر مزدوج، صلصة خاصة',
     price: 950,
-    image: 'https://picsum.photos/seed/smash-burger/400/300',
+    image:
+      'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
-  // Sandwichs
   {
     id: 's1',
     categoryId: 'sandwich',
@@ -97,7 +101,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Kefta grillée, harissa, frites, salade',
     descriptionAr: 'كفتة مشوية، هريسة، بطاطس، سلطة',
     price: 450,
-    image: 'https://picsum.photos/seed/kefta-sandwich/400/300',
+    image:
+      'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -108,7 +113,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Filet de poulet grillé, fromage, légumes frais',
     descriptionAr: 'فيليه دجاج مشوي، جبن، خضروات طازجة',
     price: 500,
-    image: 'https://picsum.photos/seed/chicken-sandwich/400/300',
+    image:
+      'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -119,10 +125,10 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Merguez grillée, harissa douce, tomate, oignon',
     descriptionAr: 'مرقاز مشوي، هريسة خفيفة، طماطم، بصل',
     price: 480,
-    image: 'https://picsum.photos/seed/merguez-sandwich/400/300',
+    image:
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
-  // Boissons
   {
     id: 'dr1',
     categoryId: 'boisson',
@@ -131,7 +137,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Canette fraîche',
     descriptionAr: 'علبة باردة',
     price: 150,
-    image: 'https://picsum.photos/seed/coca-cola/400/300',
+    image:
+      'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -142,7 +149,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Bouteille 50cl',
     descriptionAr: 'قارورة 50سل',
     price: 80,
-    image: 'https://picsum.photos/seed/water-bottle/400/300',
+    image:
+      'https://images.unsplash.com/photo-1564419320408-38e24e038c6d?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -153,10 +161,10 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Pressé à la commande',
     descriptionAr: 'يُعصر عند الطلب',
     price: 250,
-    image: 'https://picsum.photos/seed/orange-juice/400/300',
+    image:
+      'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
-  // Desserts
   {
     id: 'd1',
     categoryId: 'dessert',
@@ -165,7 +173,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Recette traditionnelle, mascarpone et café',
     descriptionAr: 'وصفة تقليدية، ماسكاربوني وقهوة',
     price: 350,
-    image: 'https://picsum.photos/seed/tiramisu/400/300',
+    image:
+      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
   {
@@ -176,7 +185,8 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     descriptionFr: 'Crêpe maison, Nutella, banane, noisettes',
     descriptionAr: 'كريب منزلي، نوتيلا، موز، بندق',
     price: 300,
-    image: 'https://picsum.photos/seed/crepe-nutella/400/300',
+    image:
+      'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80',
     available: true,
   },
 ];
@@ -341,7 +351,8 @@ export const STORE_SETTINGS: StoreSettings = {
   whatsappNumber: process.env.NEXT_PUBLIC_WA_NUMBER ?? '213555123456',
   address: '12 Rue des Martyrs, Alger-Centre, Alger',
   phone: '+213 555 123 456',
-  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.5!2d3.0589!3d36.7538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQ1JzEzLjciTiAzwrAwMyczMi4wIkU!5e0!3m2!1sfr!2sdz!4v1',
+  mapEmbedUrl:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.5!2d3.0589!3d36.7538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQ1JzEzLjciTiAzwrAwMyczMi4wIkU!5e0!3m2!1sfr!2sdz!4v1',
   hours: [
     { day: 'Lundi - Jeudi', openFr: 'Ouvert', openAr: 'مفتوح', hours: '11:00 — 23:00' },
     { day: 'Vendredi', openFr: 'Ouvert', openAr: 'مفتوح', hours: '14:00 — 00:00' },

@@ -11,69 +11,60 @@ export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<Order[]>(MOCK_ORDERS);
 
   const handleStatusChange = (orderId: string, newStatus: OrderStatus) => {
-    setOrders((prev) =>
-      prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o))
-    );
+    setOrders((prev) => prev.map((o) => (o.id === orderId ? { ...o, status: newStatus } : o)));
   };
 
   const stats = {
     nouveau: orders.filter((o) => o.status === 'nouveau').length,
     preparation: orders.filter((o) => o.status === 'preparation').length,
     livre: orders.filter((o) => o.status === 'livre').length,
-    revenue: orders
-      .filter((o) => o.status === 'livre')
-      .reduce((sum, o) => sum + o.total, 0),
+    revenue: orders.filter((o) => o.status === 'livre').reduce((sum, o) => sum + o.total, 0),
   };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-black">Commandes</h1>
-        <p className="text-muted-foreground text-sm mt-0.5">
-          Gérez les commandes reçues via WhatsApp
-        </p>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Commandes</p>
+          <h2 className="mt-2 text-3xl font-black tracking-tight text-foreground">Vue opérationnelle</h2>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">Suivi des commandes reçues via WhatsApp avec une lecture plus propre sur mobile.</p>
+        </div>
+        <div className="surface-soft flex items-center gap-6 px-5 py-4 text-sm">
+          <div>
+            <p className="font-semibold text-foreground">Actives</p>
+            <p className="text-muted-foreground">{stats.nouveau + stats.preparation} commandes</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">CA livré</p>
+            <p className="text-muted-foreground">{formatPrice(stats.revenue)}</p>
+          </div>
+        </div>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {[
-          { label: 'Nouvelles', value: stats.nouveau, emoji: '🔔', color: 'text-blue-600' },
-          {
-            label: 'En préparation',
-            value: stats.preparation,
-            emoji: '👨‍🍳',
-            color: 'text-yellow-600',
-          },
-          { label: 'Livrées', value: stats.livre, emoji: '✅', color: 'text-green-600' },
-          {
-            label: 'CA livré',
-            value: formatPrice(stats.revenue),
-            emoji: '💰',
-            color: 'text-brand-primary',
-          },
+          { label: 'Nouvelles', value: stats.nouveau },
+          { label: 'En préparation', value: stats.preparation },
+          { label: 'Livrées', value: stats.livre },
+          { label: 'CA livré', value: formatPrice(stats.revenue) },
         ].map((stat) => (
-          <div key={stat.label} className="bg-white border rounded-xl p-4">
-            <p className="text-2xl mb-1">{stat.emoji}</p>
-            <p className={`text-2xl font-black ${stat.color}`}>{stat.value}</p>
-            <p className="text-xs text-muted-foreground">{stat.label}</p>
+          <div key={stat.label} className="surface p-4 sm:p-5">
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">{stat.label}</p>
+            <p className="mt-3 text-2xl font-black text-foreground">{stat.value}</p>
           </div>
         ))}
       </div>
 
-      {/* Filter tabs */}
-      <div className="flex gap-2 flex-wrap">
+      <div className="flex gap-2 overflow-x-auto pb-1">
         {[
           { label: 'Toutes', count: orders.length },
           { label: 'Nouvelles', count: stats.nouveau },
           { label: 'En préparation', count: stats.preparation },
           { label: 'Livrées', count: stats.livre },
         ].map((filter) => (
-          <button
-            key={filter.label}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm font-medium hover:bg-muted transition-colors"
-          >
+          <button key={filter.label} className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-foreground/75 hover:text-foreground">
             {filter.label}
-            <Badge variant="secondary" className="text-xs">
+            <Badge variant="secondary" className="rounded-full bg-brand-bg text-[11px] text-foreground">
               {filter.count}
             </Badge>
           </button>

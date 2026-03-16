@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 40 100% 97%;
-    --foreground: 222 47% 11%;
+    --background: 40 33% 98%;
+    --foreground: 220 18% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 18% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 0 72% 57%;
+    --popover-foreground: 220 18% 12%;
+    --primary: 145 63% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 35 90% 65%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 35 90% 65%;
-    --accent-foreground: 222 47% 11%;
+    --secondary: 35 100% 95%;
+    --secondary-foreground: 220 18% 12%;
+    --muted: 36 33% 95%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 35 100% 95%;
+    --accent-foreground: 220 18% 12%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 0 72% 57%;
-    --radius: 0.75rem;
+    --border: 30 18% 90%;
+    --input: 30 18% 90%;
+    --ring: 145 63% 42%;
+    --radius: 1rem;
   }
 }
 
@@ -31,17 +31,35 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-brand-bg text-foreground;
+    @apply bg-brand-bg text-foreground antialiased;
+    font-feature-settings: 'ss01' on, 'cv01' on, 'cv11' on;
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+@layer utilities {
+  .shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .surface {
+    @apply rounded-[28px] border border-black/5 bg-white shadow-[0_10px_30px_rgba(17,24,39,0.06)];
+  }
+
+  .surface-soft {
+    @apply rounded-[24px] border border-black/5 bg-white/80 backdrop-blur;
+  }
 }
 
-/* RTL-aware transitions */
 [dir='rtl'] .rtl-flip {
   transform: scaleX(-1);
 }

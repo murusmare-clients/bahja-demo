@@ -1,79 +1,70 @@
-import { useTranslations } from 'next-intl';
-import { MapPin, Phone, Clock } from 'lucide-react';
+import { Phone, Clock, ArrowUpRight, Instagram, Facebook, Music2 } from 'lucide-react';
 import { STORE_SETTINGS } from '@/lib/mock-data';
 
 export default function ContactSection() {
-  const t = useTranslations('contact');
-
   return (
-    <section id="contact" className="py-16 px-4 bg-white">
-      <div className="container mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black mb-3">{t('title')}</h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Info panel */}
-          <div className="space-y-6">
-            {/* Address */}
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
-                <MapPin className="h-5 w-5 text-brand-primary" />
-              </div>
-              <div>
-                <p className="font-semibold">{t('address')}</p>
-                <p className="text-muted-foreground text-sm mt-0.5">{STORE_SETTINGS.address}</p>
-              </div>
+    <section id="contact" className="shell py-4 pb-28 lg:pb-16">
+      <div className="grid gap-5 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="surface p-5 sm:p-6 lg:p-8">
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-[24px] bg-brand-bg p-5">
+              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Adresse</p>
+              <p className="mt-3 text-base font-semibold leading-7 text-foreground">{STORE_SETTINGS.address}</p>
             </div>
-
-            {/* Phone */}
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
-                <Phone className="h-5 w-5 text-brand-primary" />
-              </div>
-              <div>
-                <p className="font-semibold">{t('phone')}</p>
-                <a
-                  href={`tel:${STORE_SETTINGS.phone}`}
-                  className="text-brand-primary text-sm mt-0.5 hover:underline"
-                >
-                  {STORE_SETTINGS.phone}
-                </a>
-              </div>
+            <div className="rounded-[24px] bg-brand-bg p-5">
+              <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Téléphone</p>
+              <a href={`tel:${STORE_SETTINGS.phone}`} className="mt-3 inline-block text-base font-semibold text-foreground hover:text-brand-primary">
+                {STORE_SETTINGS.phone}
+              </a>
             </div>
-
-            {/* Hours */}
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
-                <Clock className="h-5 w-5 text-brand-primary" />
-              </div>
-              <div className="flex-1">
-                <p className="font-semibold mb-2">{t('hours')}</p>
-                <div className="space-y-1">
-                  {STORE_SETTINGS.hours.map((h, i) => (
-                    <div key={i} className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">{h.day}</span>
-                      <span className="font-medium">{h.hours}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* WhatsApp CTA */}
-            <a
-              href={`https://wa.me/${STORE_SETTINGS.whatsappNumber}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
-            >
-              <span className="text-xl">💬</span>
-              Commander sur WhatsApp
-            </a>
           </div>
 
-          {/* Map */}
-          <div className="rounded-xl overflow-hidden shadow-md h-72 lg:h-96 bg-gray-100">
+          <div className="mt-4 rounded-[24px] bg-brand-bg p-5">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {STORE_SETTINGS.hours.map((h, i) => (
+                <div key={i} className="rounded-[20px] bg-white px-4 py-4">
+                  <p className="text-sm font-semibold text-foreground">{h.day}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{h.hours}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            {[
+              { href: 'https://instagram.com', label: 'Instagram', icon: Instagram },
+              { href: 'https://facebook.com', label: 'Facebook', icon: Facebook },
+              { href: 'https://tiktok.com', label: 'TikTok', icon: Music2 },
+            ].map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-2.5 text-sm font-medium text-foreground/80 hover:text-foreground"
+                >
+                  <Icon className="h-4 w-4" />
+                  {social.label}
+                </a>
+              );
+            })}
+          </div>
+
+          <a
+            href={`https://wa.me/${STORE_SETTINGS.whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#111111] px-5 py-3 text-sm font-semibold text-white hover:bg-black"
+          >
+            Commander sur WhatsApp
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="surface overflow-hidden p-3">
+          <div className="h-[320px] overflow-hidden rounded-[24px] bg-gray-100 sm:h-[420px]">
             <iframe
               src={STORE_SETTINGS.mapEmbedUrl}
               width="100%"
@@ -84,6 +75,22 @@ export default function ContactSection() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Localisation Fast Food El Bahdja"
             />
+          </div>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-[22px] bg-brand-bg p-4">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white">
+                <Phone className="h-4 w-4" />
+              </div>
+              <p className="mt-3 text-sm font-semibold text-foreground">Contact direct</p>
+              <p className="mt-1 text-sm text-muted-foreground">WhatsApp et téléphone disponibles pendant les heures d&apos;ouverture.</p>
+            </div>
+            <div className="rounded-[22px] bg-brand-bg p-4">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white">
+                <Clock className="h-4 w-4" />
+              </div>
+              <p className="mt-3 text-sm font-semibold text-foreground">Service rapide</p>
+              <p className="mt-1 text-sm text-muted-foreground">Préparation pensée pour des commandes simples et mobiles.</p>
+            </div>
           </div>
         </div>
       </div>
