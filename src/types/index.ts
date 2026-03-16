@@ -16,6 +16,19 @@ export interface MenuItem {
   price: number; // in DA
   image: string;
   available: boolean;
+  featured?: boolean; // signature dish
+}
+
+export interface Combo {
+  id: string;
+  nameFr: string;
+  nameAr: string;
+  descriptionFr?: string;
+  descriptionAr?: string;
+  price: number; // in DA
+  image: string;
+  available: boolean;
+  featured: boolean; // shown in hero
 }
 
 export interface CartItem {

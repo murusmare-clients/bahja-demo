@@ -14,7 +14,7 @@ const config: Config = {
           primary: '#E53E3E',
           dark: '#C53030',
           accent: '#F6AD55',
-          bg: '#FFFAF0',
+          bg: '#FAFAFA',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

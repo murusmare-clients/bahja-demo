@@ -52,7 +52,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <button className="flex h-10 w-10 items-center justify-center rounded-full border border-black/5 bg-white text-muted-foreground">
                 <Bell className="h-4 w-4" />
               </button>
-              <Link href="/fr" className="rounded-full bg-black px-4 py-2 text-sm font-semibold text-white">
+              <Link href="/fr" className="rounded-full bg-brand-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-dark">
                 Voir le site
               </Link>
             </div>

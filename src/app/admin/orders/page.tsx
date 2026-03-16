@@ -57,12 +57,16 @@ export default function AdminOrdersPage() {
 
       <div className="flex gap-2 overflow-x-auto pb-1">
         {[
-          { label: 'Toutes', count: orders.length },
-          { label: 'Nouvelles', count: stats.nouveau },
-          { label: 'En préparation', count: stats.preparation },
-          { label: 'Livrées', count: stats.livre },
+          { label: 'Toutes', count: orders.length, dotColor: 'bg-foreground/40' },
+          { label: 'Nouvelles', count: stats.nouveau, dotColor: 'bg-blue-400' },
+          { label: 'En préparation', count: stats.preparation, dotColor: 'bg-orange-400' },
+          { label: 'Livrées', count: stats.livre, dotColor: 'bg-green-500' },
         ].map((filter) => (
-          <button key={filter.label} className="inline-flex items-center gap-2 rounded-full border border-black/8 bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-foreground/75 hover:text-foreground">
+          <button
+            key={filter.label}
+            className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 py-2 text-sm font-medium whitespace-nowrap text-foreground/75 transition-colors hover:border-brand-primary/30 hover:text-foreground"
+          >
+            <span className={`h-2 w-2 rounded-full ${filter.dotColor}`} />
             {filter.label}
             <Badge variant="secondary" className="rounded-full bg-brand-bg text-[11px] text-foreground">
               {filter.count}

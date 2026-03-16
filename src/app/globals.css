@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 220 18% 12%;
+    --background: 0 0% 99%;
+    --foreground: 220 18% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 220 18% 12%;
+    --card-foreground: 220 18% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 18% 12%;
-    --primary: 145 63% 42%;
+    --popover-foreground: 220 18% 10%;
+    --primary: 0 72% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 35 100% 95%;
-    --secondary-foreground: 220 18% 12%;
-    --muted: 36 33% 95%;
-    --muted-foreground: 220 10% 40%;
-    --accent: 35 100% 95%;
-    --accent-foreground: 220 18% 12%;
+    --secondary: 0 100% 97%;
+    --secondary-foreground: 0 72% 40%;
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 44%;
+    --accent: 25 95% 96%;
+    --accent-foreground: 25 95% 35%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 30 18% 90%;
-    --input: 30 18% 90%;
-    --ring: 145 63% 42%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 0 72% 55%;
     --radius: 1rem;
   }
 }
@@ -37,7 +37,7 @@
   }
 
   body {
-    @apply bg-brand-bg text-foreground antialiased;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: 'ss01' on, 'cv01' on, 'cv11' on;
   }
 
@@ -52,11 +52,11 @@
   }
 
   .surface {
-    @apply rounded-[28px] border border-black/5 bg-white shadow-[0_10px_30px_rgba(17,24,39,0.06)];
+    @apply rounded-[28px] border border-black/[0.04] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04),0_6px_16px_rgba(0,0,0,0.05)];
   }
 
   .surface-soft {
-    @apply rounded-[24px] border border-black/5 bg-white/80 backdrop-blur;
+    @apply rounded-[24px] border border-black/[0.04] bg-white/80 backdrop-blur;
   }
 }
 

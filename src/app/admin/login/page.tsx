@@ -43,7 +43,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-brand-bg px-4 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl flex-col gap-5 lg:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
         <div className="surface relative overflow-hidden bg-[#111111] p-6 text-white sm:p-8 lg:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.28),transparent_25%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(229,62,62,0.2),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(251,146,60,0.15),transparent_35%)]" />
           <div className="relative flex h-full flex-col justify-between">
             <div>
               <div className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">

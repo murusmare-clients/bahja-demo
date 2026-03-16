@@ -14,12 +14,12 @@ import type { Order, OrderStatus } from '@/types';
 
 const STATUS_CONFIG: Record<
   OrderStatus,
-  { label: string; variant: 'default' | 'warning' | 'info' | 'success' | 'muted' }
+  { label: string; variant: 'default' | 'warning' | 'info' | 'success' | 'muted'; borderColor: string }
 > = {
-  nouveau: { label: 'Nouveau', variant: 'info' },
-  preparation: { label: 'En préparation', variant: 'warning' },
-  livre: { label: 'Livré', variant: 'success' },
-  annule: { label: 'Annulé', variant: 'muted' },
+  nouveau: { label: 'Nouveau', variant: 'info', borderColor: 'border-l-blue-400' },
+  preparation: { label: 'En préparation', variant: 'warning', borderColor: 'border-l-orange-400' },
+  livre: { label: 'Livré', variant: 'success', borderColor: 'border-l-green-500' },
+  annule: { label: 'Annulé', variant: 'muted', borderColor: 'border-l-gray-300' },
 };
 
 const STATUS_TRANSITIONS: Record<OrderStatus, { value: OrderStatus; label: string }[]> = {
@@ -58,10 +58,10 @@ export default function OrdersTable({ orders, onStatusChange }: OrdersTableProps
           </thead>
           <tbody>
             {orders.map((order) => {
-              const { label, variant } = STATUS_CONFIG[order.status];
+              const { label, variant, borderColor } = STATUS_CONFIG[order.status];
               const transitions = STATUS_TRANSITIONS[order.status];
               return (
-                <tr key={order.id} className="border-t border-black/5 align-top">
+                <tr key={order.id} className={`border-t border-black/5 align-top border-l-4 ${borderColor} transition-colors hover:bg-gray-50/60`}>
                   <td className="px-6 py-5">
                     <p className="font-mono text-sm font-semibold text-foreground">{order.id}</p>
                     <p className="mt-1 text-xs text-muted-foreground">

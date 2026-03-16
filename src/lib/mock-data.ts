@@ -1,4 +1,4 @@
-import type { Category, MenuItem, Order, StoreSettings } from '@/types';
+import type { Category, Combo, MenuItem, Order, StoreSettings } from '@/types';
 
 export const MOCK_CATEGORIES: Category[] = [
   { id: 'pizza', nameFr: 'Pizzas', nameAr: 'بيتزا', emoji: '', order: 1 },
@@ -80,6 +80,7 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     image:
       'https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=1200&q=80',
     available: true,
+    featured: true, // signature dish
   },
   {
     id: 'b3',
@@ -188,6 +189,45 @@ export const MOCK_MENU_ITEMS: MenuItem[] = [
     image:
       'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=1200&q=80',
     available: true,
+  },
+];
+
+export const MOCK_COMBOS: Combo[] = [
+  {
+    id: 'combo-1',
+    nameFr: 'Combo Solo',
+    nameAr: 'كومبو سولو',
+    descriptionFr: 'Burger crispy, frites maison et boisson au choix.',
+    descriptionAr: 'برغر مقرمش، بطاطس منزلية ومشروب حسب الاختيار.',
+    price: 1350,
+    image:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=80',
+    available: true,
+    featured: true,
+  },
+  {
+    id: 'combo-2',
+    nameFr: 'Combo Duo',
+    nameAr: 'كومبو ثنائي',
+    descriptionFr: '2 pizzas au choix, 2 boissons et 1 dessert partagé.',
+    descriptionAr: 'بيتزتان حسب الاختيار، مشروبان وحلوى مشتركة.',
+    price: 3200,
+    image:
+      'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=80',
+    available: true,
+    featured: false,
+  },
+  {
+    id: 'combo-3',
+    nameFr: 'Combo Famille',
+    nameAr: 'كومبو عائلي',
+    descriptionFr: '2 grandes pizzas, 4 sandwichs et 4 boissons.',
+    descriptionAr: 'بيتزتان كبيرتان، 4 ساندويشات و4 مشروبات.',
+    price: 5500,
+    image:
+      'https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=1200&q=80',
+    available: true,
+    featured: false,
   },
 ];
 
