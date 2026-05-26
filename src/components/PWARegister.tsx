@@ -21,7 +21,9 @@ export default function PWARegister() {
   const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isStandalone, setIsStandalone] = useState(false);
   const [isDismissed, setIsDismissed] = useState(true);
-  const [showIOSHelp, setShowIOSHelp] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [showManualHelp, setShowManualHelp] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -29,9 +31,12 @@ export default function PWARegister() {
     const standalone =
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+    const dismissed = window.localStorage.getItem(DISMISS_KEY) === '1';
+
     setIsStandalone(standalone);
-    setIsDismissed(window.localStorage.getItem(DISMISS_KEY) === '1');
-    setShowIOSHelp(isIOSDevice() && !standalone);
+    setIsDismissed(dismissed);
+    setIsIOS(isIOSDevice());
+    setIsReady(true);
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -51,7 +56,7 @@ export default function PWARegister() {
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
   }, []);
 
-  if (isStandalone || isDismissed || (!installPrompt && !showIOSHelp)) {
+  if (!isReady || isStandalone || isDismissed) {
     return null;
   }
 
@@ -61,12 +66,20 @@ export default function PWARegister() {
   };
 
   const installApp = async () => {
-    if (!installPrompt) return;
+    if (!installPrompt) {
+      setShowManualHelp((current) => !current);
+      return;
+    }
+
     await installPrompt.prompt();
     await installPrompt.userChoice;
     setInstallPrompt(null);
     dismiss();
   };
+
+  const helpText = isIOS
+    ? 'Sur iPhone : appuyez sur Partager, puis Ajouter à l’écran d’accueil.'
+    : 'Si l’installation ne s’ouvre pas : menu du navigateur ⋮, puis Installer l’application ou Ajouter à l’écran d’accueil.';
 
   return (
     <div className="fixed inset-x-3 bottom-4 z-50 mx-auto max-w-md rounded-3xl border border-black/10 bg-white/95 p-4 shadow-2xl shadow-black/20 backdrop-blur md:bottom-6">
@@ -76,26 +89,22 @@ export default function PWARegister() {
         </div>
         <div className="min-w-0 flex-1">
           <p className="text-sm font-black text-foreground">Télécharger le raccourci</p>
-          {showIOSHelp && !installPrompt ? (
-            <p className="mt-1 text-xs leading-5 text-muted-foreground">
-              Sur iPhone : appuyez sur <span className="font-bold text-foreground">Partager</span>, puis{' '}
-              <span className="font-bold text-foreground">Ajouter à l’écran d’accueil</span>.
+          <p className="mt-1 text-xs leading-5 text-muted-foreground">
+            Ajoutez El Bahdja à votre écran d’accueil pour commander plus rapidement.
+          </p>
+          {showManualHelp ? (
+            <p className="mt-2 rounded-2xl bg-orange-50 px-3 py-2 text-xs font-medium leading-5 text-orange-950">
+              {helpText}
             </p>
-          ) : (
-            <p className="mt-1 text-xs leading-5 text-muted-foreground">
-              Ajoutez El Bahdja à votre écran d’accueil pour commander plus rapidement.
-            </p>
-          )}
+          ) : null}
           <div className="mt-3 flex gap-2">
-            {installPrompt ? (
-              <button
-                type="button"
-                onClick={installApp}
-                className="rounded-full bg-brand-primary px-4 py-2 text-xs font-black text-white shadow-md shadow-brand-primary/20 transition hover:-translate-y-0.5"
-              >
-                Installer
-              </button>
-            ) : null}
+            <button
+              type="button"
+              onClick={installApp}
+              className="rounded-full bg-brand-primary px-4 py-2 text-xs font-black text-white shadow-md shadow-brand-primary/20 transition hover:-translate-y-0.5"
+            >
+              {installPrompt ? 'Installer' : 'Comment faire'}
+            </button>
             <button
               type="button"
               onClick={dismiss}
