@@ -32,7 +32,7 @@ export default async function HomePage({ params }: PageProps) {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            {['Livraison à domicile', 'Paiement à la livraison', 'Commande WhatsApp', 'Admin mobile'].map((feat) => (
+            {['Livraison à domicile', 'Paiement à la livraison', 'Commande WhatsApp', 'Menu à jour'].map((feat) => (
               <span
                 key={feat}
                 className="rounded-full border border-black/[0.08] bg-white px-3 py-1 text-xs font-medium text-muted-foreground"
